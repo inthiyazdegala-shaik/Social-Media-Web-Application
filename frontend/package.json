@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --configLoader runner --host 0.0.0.0",
+    "dev": "vite --configLoader runner --host 0.0.0.0 --port 5174",
     "build": "vite --configLoader runner build",
-    "preview": "vite --configLoader runner preview --host 0.0.0.0"
+    "preview": "vite --configLoader runner preview --host 0.0.0.0 --port 4174"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^5.1.1",
