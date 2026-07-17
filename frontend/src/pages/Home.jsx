@@ -14,6 +14,7 @@ function Home({ user, onLogout }) {
   const [friends, setFriends] = useState(() => JSON.parse(localStorage.getItem("circlioFriends") || "null") || ["maya.frames", "arjun.wild"]);
   const [modal, setModal] = useState(null);
   const [error, setError] = useState("");
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem("circlioTheme") === "dark");
 
   const visiblePosts = useMemo(() => posts.filter((post) => `${post.username} ${post.place} ${post.caption}`.toLowerCase().includes(search.toLowerCase())), [posts, search]);
 
@@ -60,6 +61,11 @@ function Home({ user, onLogout }) {
     localStorage.setItem("circlioFriends", JSON.stringify(friends));
   }, [friends]);
 
+  useEffect(() => {
+    document.body.classList.toggle("dark-mode", darkMode);
+    localStorage.setItem("circlioTheme", darkMode ? "dark" : "light");
+  }, [darkMode]);
+
   return (
     <>
       <Navbar
@@ -69,6 +75,8 @@ function Home({ user, onLogout }) {
         onPost={() => document.querySelector(".composer input")?.focus()}
         onInbox={() => setModal({ type: "messages" })}
         onProfile={() => openProfile(user.username)}
+        darkMode={darkMode}
+        onToggleTheme={() => setDarkMode((current) => !current)}
       />
 
       <main className="layout">
