@@ -28,8 +28,17 @@ function Home({ user, onLogout }) {
   }
 
   async function likePost(id) {
-    await apiRequest(`/posts/${id}/like`, { method: "POST" });
-    loadPosts();
+    try {
+      const data = await apiRequest(`/posts/${id}/like`, { method: "POST" });
+      if (data.post) {
+        setPosts((currentPosts) => currentPosts.map((post) => post.id === id ? data.post : post));
+      } else {
+        loadPosts();
+      }
+      setError("");
+    } catch (likeError) {
+      setError(likeError.message);
+    }
   }
 
   async function openProfile(username) {

@@ -5,6 +5,7 @@ function CreatePost({ onCreated }) {
   const [caption, setCaption] = useState("");
   const [image, setImage] = useState("");
   const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
 
   function chooseImage(event) {
     const file = event.target.files?.[0];
@@ -18,14 +19,21 @@ function CreatePost({ onCreated }) {
     event.preventDefault();
     if (!caption.trim() && !image) return;
     setBusy(true);
-    await apiRequest("/posts", {
-      method: "POST",
-      body: JSON.stringify({ caption, image })
-    });
-    setCaption("");
-    setImage("");
-    setBusy(false);
-    onCreated();
+    setError("");
+
+    try {
+      await apiRequest("/posts", {
+        method: "POST",
+        body: JSON.stringify({ caption, image })
+      });
+      setCaption("");
+      setImage("");
+      onCreated();
+    } catch (postError) {
+      setError(postError.message);
+    } finally {
+      setBusy(false);
+    }
   }
 
   return (
@@ -36,7 +44,8 @@ function CreatePost({ onCreated }) {
         Photo
         <input className="file-input" type="file" accept="image/*" onChange={chooseImage} />
       </label>
-      <button disabled={busy} type="submit">Post</button>
+      <button disabled={busy || (!caption.trim() && !image)} type="submit">{busy ? "Posting" : "Post"}</button>
+      {error && <p className="composer-error">{error}</p>}
       {image && (
         <div className="preview-strip open">
           <img src={image} alt="Selected post preview" />

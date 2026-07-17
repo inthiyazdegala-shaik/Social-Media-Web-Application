@@ -221,6 +221,12 @@ input {
   background: #fafafa;
 }
 
+.composer-error {
+  grid-column: 2 / -1;
+  color: #dc2626;
+  font-size: 13px;
+}
+
 .preview-strip.open {
   display: flex;
 }
@@ -749,6 +755,10 @@ input {
   }
 
   .preview-strip {
+    grid-column: 1 / -1;
+  }
+
+  .composer-error {
     grid-column: 1 / -1;
   }
 
