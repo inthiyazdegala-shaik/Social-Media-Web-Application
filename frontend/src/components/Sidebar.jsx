@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { initials, suggestionUsers } from "../utils";
+import { initials, liveSignals, suggestionUsers } from "../utils";
 
 function FriendForm({ onAdd }) {
   const [value, setValue] = useState("");
@@ -43,12 +43,22 @@ function Sidebar({ user, posts, friends, setFriends, onLogout, onProfile }) {
       </section>
 
       <section className="panel suggestions">
-        <h2>Suggested for you</h2>
+        <h2>Live signals</h2>
+        {liveSignals.map((signal) => (
+          <div className="signal-row" key={signal.label}>
+            <span>{signal.label}</span>
+            <p>{signal.text}</p>
+          </div>
+        ))}
+      </section>
+
+      <section className="panel suggestions">
+        <h2>Sources to follow</h2>
         {suggestionUsers.map((name) => (
           <div className="suggestion" key={name}>
             <button className="profile-head profile-link" type="button" onClick={() => onProfile(name)}>
               <span className="mini-avatar">{initials(name)}</span>
-              <span><strong>{name}</strong><span className="muted">Popular on Circlio</span></span>
+              <span><strong>{name}</strong><span className="muted">Real-world pulse source</span></span>
             </button>
             <button className="follow" type="button" onClick={() => addFriend(name)}>Follow</button>
           </div>

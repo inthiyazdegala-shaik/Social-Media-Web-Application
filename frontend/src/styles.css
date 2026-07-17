@@ -165,7 +165,7 @@ button {
   margin: 30px auto;
   padding: 0 22px;
   display: grid;
-  grid-template-columns: minmax(0, 690px) 340px;
+  grid-template-columns: minmax(0, 720px) 330px;
   gap: 34px;
   align-items: start;
 }
@@ -185,6 +185,186 @@ button {
   border-radius: 8px;
   background: var(--surface);
   box-shadow: var(--shadow);
+}
+
+.pulse-hero {
+  min-height: 330px;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  align-items: stretch;
+  background:
+    linear-gradient(135deg, rgba(7, 20, 32, 0.72), rgba(15, 139, 141, 0.48)),
+    url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=80");
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+
+.pulse-copy {
+  padding: 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.eyebrow {
+  width: fit-content;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 999px;
+  padding: 7px 12px;
+  background: rgba(255, 255, 255, 0.14);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.pulse-copy h1 {
+  max-width: 560px;
+  margin-top: 18px;
+  font-size: 44px;
+  line-height: 1.02;
+}
+
+.pulse-copy p {
+  max-width: 560px;
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1.55;
+}
+
+.pulse-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.pulse-metrics span {
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px);
+  font-size: 13px;
+}
+
+.pulse-metrics strong {
+  margin-right: 5px;
+  font-size: 18px;
+}
+
+.earth-card {
+  position: relative;
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.earth-glow {
+  width: 178px;
+  height: 178px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, #b8fff8 0 7%, transparent 8%),
+    radial-gradient(circle at 62% 55%, #5eead4 0 12%, transparent 13%),
+    radial-gradient(circle at 48% 46%, #1d4ed8, #0f8b8d 48%, #072033 72%);
+  box-shadow: 0 0 40px rgba(94, 234, 212, 0.55);
+}
+
+.signal-card {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(14px);
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.signal-one {
+  top: 54px;
+  left: 12px;
+}
+
+.signal-two {
+  right: 18px;
+  top: 132px;
+}
+
+.signal-three {
+  bottom: 56px;
+  left: 28px;
+}
+
+.topic-rail {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  margin-bottom: 18px;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+}
+
+.topic-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.topic-rail button {
+  flex: 0 0 auto;
+  height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 900;
+  padding: 0 16px;
+}
+
+.feed-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 6px;
+  box-shadow: var(--shadow);
+}
+
+.feed-tabs button {
+  min-height: 40px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 900;
+}
+
+.feed-tabs button.active {
+  background: var(--primary);
+  color: #fff;
+}
+
+.follow-hint {
+  margin-bottom: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  padding: 14px 16px;
+  display: grid;
+  gap: 5px;
+}
+
+.follow-hint span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 .stories {
@@ -207,6 +387,30 @@ button {
   background: transparent;
   text-align: center;
   color: var(--text);
+}
+
+.story-wrap {
+  position: relative;
+  width: 76px;
+  flex: 0 0 auto;
+}
+
+.story-wrap .story {
+  width: 100%;
+}
+
+.story-remove {
+  position: absolute;
+  top: -2px;
+  right: 4px;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--surface);
+  border-radius: 50%;
+  background: var(--text);
+  color: var(--surface);
+  font-size: 11px;
+  font-weight: 900;
 }
 
 .ring {
@@ -349,12 +553,51 @@ button {
 
 .more-btn {
   margin-left: auto;
-  width: 36px;
+  min-width: 48px;
   height: 36px;
   border: 0;
   border-radius: 8px;
   background: var(--surface-soft);
   color: var(--muted);
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.source-pill {
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 7px 10px;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.source-pill + .more-btn {
+  margin-left: 6px;
+}
+
+.follow-chip {
+  margin-left: auto;
+  min-width: 76px;
+  height: 34px;
+  border: 1px solid var(--primary);
+  border-radius: 999px;
+  background: var(--primary);
+  color: #fff;
+  padding: 0 12px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.follow-chip.following {
+  background: var(--surface);
+  color: var(--primary);
+}
+
+.follow-chip + .source-pill {
+  margin-left: 6px;
 }
 
 .post-image {
@@ -362,6 +605,8 @@ button {
   background-size: cover;
   background-position: center;
   background-color: var(--surface-soft);
+  background-image:
+    linear-gradient(135deg, rgba(15, 139, 141, 0.16), rgba(233, 79, 55, 0.14));
 }
 
 .post-body {
@@ -502,6 +747,30 @@ button {
 .circle-panel h2 {
   font-size: 15px;
   margin-bottom: 14px;
+}
+
+.signal-row {
+  border-top: 1px solid var(--line);
+  padding: 12px 0;
+}
+
+.signal-row:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.signal-row span {
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.signal-row p {
+  margin-top: 5px;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 .suggestion {
@@ -875,6 +1144,14 @@ button {
     gap: 18px;
   }
 
+  .pulse-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .earth-card {
+    min-height: 190px;
+  }
+
   .sidebar {
     position: static;
     display: grid;
@@ -989,6 +1266,27 @@ button {
   .story-view {
     height: calc(100vh - 46px);
     max-height: none;
+  }
+
+  .pulse-hero {
+    min-height: auto;
+    border-radius: 0;
+  }
+
+  .pulse-copy {
+    padding: 28px 18px;
+  }
+
+  .pulse-copy h1 {
+    font-size: 34px;
+  }
+
+  .earth-card {
+    display: none;
+  }
+
+  .topic-rail {
+    padding: 0 12px 2px;
   }
 
   .login-shell {

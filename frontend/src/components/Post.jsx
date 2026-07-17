@@ -1,6 +1,6 @@
 import { initials } from "../utils";
 
-function Post({ post, onLike, onProfile }) {
+function Post({ post, followed, onFollow, onLike, onHide, onProfile }) {
   const createdAt = post.createdAt ? new Date(post.createdAt).toLocaleDateString(undefined, { month: "short", day: "numeric" }) : "Today";
 
   return (
@@ -9,15 +9,21 @@ function Post({ post, onLike, onProfile }) {
         <button className="mini-avatar profile-button" type="button" onClick={() => onProfile(post.username)}>{initials(post.username)}</button>
         <div>
           <button className="post-user" type="button" onClick={() => onProfile(post.username)}>{post.username}</button>
-          <div className="post-place">{post.place} · {createdAt}</div>
+          <div className="post-place">{post.place} - {createdAt}</div>
         </div>
-        <button className="more-btn" type="button" aria-label="More options">•••</button>
+        {post.demo && (
+          <button className={`follow-chip ${followed ? "following" : ""}`} type="button" onClick={onFollow}>
+            {followed ? "Following" : "Follow"}
+          </button>
+        )}
+        {post.source && <span className="source-pill">{post.source}</span>}
+        {post.demo && <button className="more-btn" type="button" onClick={onHide} aria-label="Hide starter post">Hide</button>}
       </header>
       <div className="post-image" style={{ backgroundImage: `url("${post.image}")` }} />
       <div className="post-body">
         <div className="post-tools">
-          <button className={`icon-btn like-btn ${post.liked ? "active" : ""}`} type="button" onClick={() => onLike(post.id)}><span>{post.liked ? "♥" : "♡"}</span><small>{post.liked ? "Liked" : "Like"}</small></button>
-          <button className="icon-btn" type="button"><span>◌</span><small>Comment</small></button>
+          <button className={`icon-btn like-btn ${post.liked ? "active" : ""}`} type="button" onClick={onLike}><span>{post.liked ? "♥" : "♡"}</span><small>{post.liked ? "Liked" : "Like"}</small></button>
+          <button className="icon-btn" type="button"><span>○</span><small>Comment</small></button>
           <button className="icon-btn" type="button"><span>↗</span><small>Share</small></button>
           <button className="icon-btn save-btn" type="button"><span>◇</span><small>Save</small></button>
         </div>

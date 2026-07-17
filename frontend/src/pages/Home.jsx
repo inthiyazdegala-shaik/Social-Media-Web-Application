@@ -80,7 +80,17 @@ function Home({ user, onLogout }) {
       />
 
       <main className="layout">
-        <Feed posts={visiblePosts} error={error} onCreate={loadPosts} onLike={likePost} onProfile={openProfile} onStory={(story) => setModal({ type: "story", story })} />
+        <Feed
+          posts={visiblePosts}
+          search={search}
+          friends={friends}
+          setFriends={setFriends}
+          error={error}
+          onCreate={loadPosts}
+          onLike={likePost}
+          onProfile={openProfile}
+          onStory={(story) => setModal({ type: "story", story })}
+        />
         <Sidebar user={user} posts={posts} friends={friends} setFriends={setFriends} onLogout={onLogout} onProfile={openProfile} />
       </main>
       <Footer />
